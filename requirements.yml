@@ -1,0 +1,5 @@
+---
+# from Galaxy
+- src: geerlingguy.docker
+# from GitHub
+- src: https://github.com/Thalamus-am/ansible-role-user-config

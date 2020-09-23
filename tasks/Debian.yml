@@ -1,0 +1,11 @@
+---
+- name: Install APT apps
+  apt:
+    name: "{{ docker_config_apt_packages }}"
+    update_cache: true
+    state: latest
+
+- name: Install python packages
+  pip:
+    name: "{{ docker_config_python_packages }}"
+    state: latest

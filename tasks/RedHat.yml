@@ -1,0 +1,24 @@
+---
+- name: Import "{{ docker_config_repo_name }}" GPG key.
+  rpm_key:
+    key: "{{ docker_config_repo_gpg_key_url }}"
+    state: present
+
+- name: Install "{{ docker_config_repo_name }}" repo.
+  yum_repository:
+    name: "{{ docker_config_repo_name }}"
+    description: "{{ docker_config_repo_description }}"
+    baseurl: "{{ docker_config_repo_url }}"
+
+- name: Install YUM apps
+  yum:
+    name: "{{ docker_config_yum_packages }}"
+    update_cache: true
+    lock_timeout: 180
+    state: latest
+
+- name: Install python packages
+  pip:
+    name: "{{ docker_config_python_packages }}"
+    executable: pip3.6
+    state: latest

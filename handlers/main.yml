@@ -1,0 +1,8 @@
+---
+# handlers file for docker_config
+- name: restart docker
+  service:
+    name: docker
+    enabled: true
+    state: restarted
+  when: not docker_config_no_restart|bool
